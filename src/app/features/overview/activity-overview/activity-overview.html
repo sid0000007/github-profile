@@ -1,0 +1,43 @@
+<div class="activity-overview">
+  <div class="overview-text">
+    <h2>Activity overview</h2>
+    <p>
+      <span class="icon">📄</span>
+      Contributed to
+      @for (repo of overview.contributedRepos; track repo; let last = $last) {
+        <a href="#">{{ repo }}</a>{{ last ? '' : ',' }}
+      }
+      and {{ overview.contributedReposExtraCount }} other repositories
+    </p>
+  </div>
+
+  <div class="overview-chart">
+    <svg viewBox="-75 -20 340 250" class="radar">
+      <line [attr.x1]="center" y1="10" [attr.x2]="center" y2="190" class="axis-line" />
+      <line x1="10" [attr.y1]="center" x2="190" [attr.y2]="center" class="axis-line" />
+      <polygon [attr.points]="polygonPoints" class="radar-shape" />
+
+      <circle [attr.cx]="center" [attr.cy]="topY" r="4" class="radar-dot" />
+      <circle [attr.cx]="rightX" [attr.cy]="center" r="4" class="radar-dot" />
+      <circle [attr.cx]="center" [attr.cy]="bottomY" r="4" class="radar-dot" />
+      <circle [attr.cx]="leftX" [attr.cy]="center" r="4" class="radar-dot" />
+      <circle [attr.cx]="center" [attr.cy]="center" r="4" class="radar-dot" />
+
+      <text x="100" y="-4" text-anchor="middle" class="axis-label">Code review</text>
+
+      <text x="204" [attr.y]="center" text-anchor="start" dominant-baseline="middle" class="axis-label">
+        Issues
+      </text>
+
+      <text x="100" y="204" text-anchor="middle" class="axis-label">
+        <tspan x="100" dy="0" class="percent-label">{{ overview.pullRequestsPercent }}%</tspan>
+        <tspan x="100" dy="16">Pull requests</tspan>
+      </text>
+
+      <text x="-4" [attr.y]="center" text-anchor="end" class="axis-label">
+        <tspan x="-4" dy="-4" class="percent-label">{{ overview.commitsPercent }}%</tspan>
+        <tspan x="-4" dy="16">Commits</tspan>
+      </text>
+    </svg>
+  </div>
+</div>

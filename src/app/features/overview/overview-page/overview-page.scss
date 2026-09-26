@@ -1,0 +1,41 @@
+.overview {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px 16px 64px;
+  display: grid;
+  grid-template-columns: 296px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.main-col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.card {
+  background: var(--gh-canvas);
+  border: 1px solid var(--gh-border);
+  border-radius: 6px;
+}
+
+.contributions-card {
+  padding: 16px;
+}
+
+.divider {
+  border-top: 1px solid var(--gh-border);
+  margin: 16px 0;
+}
+
+@media (max-width: 768px) {
+  .overview {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar-col {
+    max-width: 480px;
+  }
+}

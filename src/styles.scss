@@ -1,0 +1,124 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Helvetica,
+    Arial,
+    sans-serif;
+  color: var(--gh-text);
+  background: var(--gh-canvas);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+a {
+  color: var(--gh-link);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+:root {
+  --gh-canvas: #ffffff;
+  --gh-canvas-inset: #f6f8fa;
+  // --gh-primary: #ffffff;
+  --gh-header-bg: #24292f;
+  --gh-header-bg-secondary: #f6f8fa;
+  --gh-border: #d0d7de;
+  --gh-text: #1f2328;
+  --gh-text-secondary: #59636e;
+  --gh-link: #0969da;
+  --gh-accent: #0969da;
+  --gh-btn-bg: #f6f8fa;
+
+  --gh-contrib-0: #ebedf0;
+  --gh-contrib-1: #9be9a8;
+  --gh-contrib-2: #40c463;
+  --gh-contrib-3: #30a14e;
+  --gh-contrib-4: #216e39;
+}
+
+.empty-tab {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 64px 16px;
+  text-align: center;
+  color: var(--gh-text-secondary);
+}
+
+.gh-tooltip-host {
+  position: relative;
+}
+
+.gh-tooltip {
+  position: absolute;
+  top: calc(100% + 8px);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  background: var(--gh-header-bg);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease;
+  transition-delay: 0.35s;
+  z-index: 100;
+}
+
+.gh-tooltip--center {
+  left: 50%;
+  transform: translateX(-50%) translateY(-4px);
+}
+
+.gh-tooltip-host:hover .gh-tooltip--center,
+.gh-tooltip-host:focus-visible .gh-tooltip--center {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.gh-tooltip--right {
+  right: 0;
+  transform: translateY(-4px);
+}
+
+.gh-tooltip-host:hover .gh-tooltip--right,
+.gh-tooltip-host:focus-visible .gh-tooltip--right {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.gh-tooltip-keys {
+  display: flex;
+  gap: 4px;
+}
+
+.gh-tooltip-key {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  padding: 0 5px;
+  font-size: 11px;
+  font-weight: 600;
+}

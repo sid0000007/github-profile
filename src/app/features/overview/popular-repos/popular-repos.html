@@ -1,0 +1,25 @@
+<div class="repos-header">
+  <h2>Popular repositories</h2>
+  <a href="#" class="customize-link">Customize your pins</a>
+</div>
+
+<div class="repos-grid">
+  @for (repo of repos; track repo.name) {
+    <div class="repo-card">
+      <div class="repo-card-top">
+        <a class="repo-name" href="#">{{ repo.name }}</a>
+        <span class="visibility-badge">{{ repo.visibility }}</span>
+      </div>
+      <p class="forked-from">
+        Forked from <a href="#">{{ repo.forkedFromLabel }}</a>
+      </p>
+      <p class="description">{{ repo.description }}</p>
+      @if (repo.language) {
+        <div class="language">
+          <span class="language-dot" [style.background]="repo.language.color"></span>
+          {{ repo.language.name }}
+        </div>
+      }
+    </div>
+  }
+</div>

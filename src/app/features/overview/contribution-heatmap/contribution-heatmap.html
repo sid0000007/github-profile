@@ -1,0 +1,54 @@
+<div class="heatmap-section">
+  <div class="heatmap-main">
+    <div class="heatmap-header">
+      @if (contributionsQuery.isSuccess()) {
+        <h2>{{ totalCount() }} contributions in {{ selectedYear() }}</h2>
+      } @else {
+        <h2>Contributions</h2>
+      }
+      <span class="settings-link">Contribution settings ▾</span>
+    </div>
+
+    @if (contributionsQuery.isPending()) {
+      <div class="chart-skeleton"></div>
+    } @else if (contributionsQuery.isError()) {
+      <p class="error">Couldn't load contribution data.</p>
+    } @else if (chartOption(); as option) {
+      <div class="chart-scroll">
+        <div echarts [options]="option" [autoResize]="true" class="chart"></div>
+      </div>
+    }
+
+    <div class="legend-row">
+      <a href="#">Learn how we count contributions</a>
+      <div class="legend-scale">
+        Less
+        <span class="legend-box" style="background: #ebedf0"></span>
+        <span class="legend-box" style="background: #9be9a8"></span>
+        <span class="legend-box" style="background: #40c463"></span>
+        <span class="legend-box" style="background: #30a14e"></span>
+        <span class="legend-box" style="background: #216e39"></span>
+        More
+      </div>
+    </div>
+
+    <div class="pinned-accounts">
+      @for (account of pinnedAccounts; track account.handle) {
+        <span class="pinned-pill">{{ account.icon }} {{ account.handle }}</span>
+      }
+    </div>
+  </div>
+
+  <div class="year-list">
+    @for (year of years(); track year) {
+      <button
+        class="year-btn"
+        type="button"
+        [class.active]="year === selectedYear()"
+        (click)="selectYear(year)"
+      >
+        {{ year }}
+      </button>
+    }
+  </div>
+</div>

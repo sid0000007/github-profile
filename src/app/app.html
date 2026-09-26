@@ -1,0 +1,6 @@
+<app-header [username]="username" [avatarUrl]="userQuery.data()?.avatar_url ?? null" />
+<app-tab-nav [repositoriesCount]="userQuery.data()?.public_repos ?? null" />
+<main class="page">
+  <router-outlet />
+</main>
+<app-footer />

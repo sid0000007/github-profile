@@ -1,0 +1,154 @@
+
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 16px 16px 8px;
+  background: var(--gh-header-bg-secondary);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  flex-shrink: 0;
+}
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--gh-border);
+  background: var(--gh-primary);
+  color: var(--gh-text-secondary);
+  border-radius: 6px;
+  cursor: pointer;
+  position: relative;
+
+  &:hover {
+    background: #c9d1d9;
+  }
+}
+
+.dropdown-btn {
+  width: auto;
+  padding: 0 6px;
+
+  .caret {
+    color: var(--gh-text-secondary);
+  }
+}
+
+.mark {
+  color: var(--gh-text);
+  display: inline-flex;
+}
+
+.username {
+  font-weight: 600;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 200px;
+  padding: 6px 12px;
+  border: 1px solid var(--gh-border);
+  border-radius: 6px;
+  color: var(--gh-text-secondary);
+  background: transparent;
+}
+
+.search-placeholder {
+  flex: 1;
+  font-size: 12px;
+  white-space: nowrap;
+
+  kbd {
+    font-family: inherit;
+    border: 1px solid var(--gh-border);
+    border-radius: 4px;
+    padding: 0 4px;
+  }
+}
+
+.divider {
+  width: 1px;
+  height: 20px;
+  background: var(--gh-border);
+  margin: 0 4px;
+}
+
+.unread-dot {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--gh-accent);
+  border: 2px solid var(--gh-header-bg-secondary);
+}
+
+.avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-left: 6px;
+}
+
+.avatar-placeholder {
+  background: var(--gh-border);
+}
+
+.avatar-wrap {
+  display: inline-flex;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+@media (max-width: 1100px) {
+  .search {
+    width: 200px;
+  }
+}
+
+@media (max-width: 900px) {
+  .search-placeholder {
+    display: none;
+  }
+
+  .search {
+    width: auto;
+    padding: 6px 8px;
+  }
+}
+
+@media (max-width: 700px) {
+  .dropdown-btn,
+  .divider {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .icon-btn:not(.menu-btn):not(.always-visible) {
+    display: none;
+  }
+}

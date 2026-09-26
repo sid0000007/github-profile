@@ -1,0 +1,67 @@
+.activity-overview {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 16px;
+  align-items: center;
+}
+
+.overview-text {
+  h2 {
+    font-size: 16px;
+    margin: 0 0 12px;
+  }
+
+  p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+}
+
+.icon {
+  margin-right: 4px;
+}
+
+.overview-chart {
+  display: flex;
+  justify-content: center;
+}
+
+.radar {
+  width: 340px;
+  height: 250px;
+}
+
+.axis-line {
+  stroke: #a3b3a8;
+  stroke-width: 1;
+}
+
+.radar-shape {
+  fill: rgba(31, 127, 55, 0.15);
+  stroke: #1a7f37;
+  stroke-width: 2;
+}
+
+.radar-dot {
+  fill: var(--gh-canvas);
+  stroke: #1a7f37;
+  stroke-width: 1.5;
+}
+
+.axis-label {
+  font-size: 13px;
+  fill: var(--gh-text-secondary);
+}
+
+.percent-label {
+  font-size: 13px;
+  fill: var(--gh-text);
+  font-weight: 600;
+}
+
+@media (max-width: 640px) {
+  .activity-overview {
+    grid-template-columns: 1fr;
+  }
+}

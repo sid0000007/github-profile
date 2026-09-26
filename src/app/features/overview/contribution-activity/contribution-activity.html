@@ -1,0 +1,40 @@
+<h2 class="feed-title">Contribution activity</h2>
+
+<div class="timeline">
+  @for (month of months; track month.month) {
+    <div class="month-block">
+      <h3 class="month-heading">{{ month.month }}</h3>
+
+      @for (entry of month.entries; track entry.summary) {
+        <div class="entry">
+          <span class="entry-dot"></span>
+          <div class="entry-body">
+            <p class="entry-summary">{{ entry.summary }}</p>
+
+            @if (entry.repos) {
+              <ul class="repo-stats">
+                @for (repo of entry.repos; track repo.name) {
+                  <li>
+                    <a href="#">{{ repo.name }}</a>
+                    <span class="stats-badges">
+                      @if (repo.mergedCount) {
+                        <span class="badge merged">{{ repo.mergedCount }} merged</span>
+                      }
+                      @if (repo.openCount) {
+                        <span class="badge open">{{ repo.openCount }} open</span>
+                      }
+                    </span>
+                  </li>
+                }
+              </ul>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  }
+</div>
+
+<button class="show-more-btn" type="button">Show more activity</button>
+
+<p class="unexpected-note">Seeing something unexpected? Take a look at the <a href="#">GitHub profile guide</a>.</p>

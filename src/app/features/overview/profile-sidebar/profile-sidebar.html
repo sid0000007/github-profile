@@ -1,0 +1,79 @@
+<div class="profile-sidebar">
+  @if (userQuery.isPending()) {
+    <div class="avatar skeleton"></div>
+    <div class="skeleton-line wide"></div>
+    <div class="skeleton-line"></div>
+  } @else if (userQuery.isError()) {
+    <p class="error">Couldn't load profile for {{ username }}.</p>
+  } @else if (userQuery.isSuccess()) {
+    @let user = userQuery.data();
+
+    <div class="identity">
+      @if (!avatarErrored()) {
+        <img class="avatar" [src]="user.avatar_url" [alt]="user.login" (error)="avatarErrored.set(true)" />
+      } @else {
+        <div class="avatar avatar-placeholder"></div>
+      }
+
+      <div class="identity-text">
+        <h1 class="name">{{ user.name ?? user.login }}</h1>
+        <p class="login">{{ user.login }}</p>
+      </div>
+    </div>
+
+    @if (user.bio) {
+      <p class="bio">{{ user.bio }}</p>
+    }
+
+    <button class="edit-profile-btn" type="button" disabled>Edit profile</button>
+
+    <p class="follow-stats">
+      <strong>{{ user.followers }}</strong> followers · <strong>{{ user.following }}</strong> following
+    </p>
+
+    <ul class="detail-list">
+      @if (user.company) {
+        <li><span class="icon">🏢</span>{{ user.company }}</li>
+      }
+      @if (user.location) {
+        <li><span class="icon">📍</span>{{ user.location }}</li>
+      }
+      @if (user.email) {
+        <li><span class="icon">✉️</span>{{ user.email }}</li>
+      }
+      @if (user.blog) {
+        <li>
+          <span class="icon">🔗</span>
+          <a [href]="user.blog" target="_blank" rel="noopener">{{ user.blog }}</a>
+        </li>
+      }
+      <li><span class="icon">💼</span><a href="#">in/shreeramkushwaha</a></li>
+      @if (user.twitter_username) {
+        <li><span class="icon">𝕏</span>{{ '@' + user.twitter_username }}</li>
+      }
+    </ul>
+  }
+
+  <div class="section">
+    <h2 class="section-title">Achievements</h2>
+    <div class="achievements">
+      @for (achievement of achievements; track achievement.label) {
+        <span class="achievement-badge" [title]="achievement.label">
+          {{ achievement.emoji }}
+          @if (achievement.count) {
+            <span class="achievement-count">x{{ achievement.count }}</span>
+          }
+        </span>
+      }
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">Organizations</h2>
+    <div class="organizations">
+      @for (org of organizations; track org.name) {
+        <span class="org-badge" [style.background]="org.color" [title]="org.name">{{ org.initials }}</span>
+      }
+    </div>
+  </div>
+</div>

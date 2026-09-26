@@ -1,0 +1,140 @@
+.heatmap-section {
+  display: flex;
+  gap: 16px;
+}
+
+.heatmap-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.heatmap-header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  justify-content: space-between;
+  margin-bottom: 8px;
+
+  h2 {
+    font-size: 10px;
+    margin: 0;
+  }
+}
+
+.settings-link {
+  font-size: 12px;
+  color: var(--gh-link);
+  cursor: pointer;
+}
+
+.chart-scroll {
+  overflow-x: auto;
+}
+
+.chart {
+  width: 100%;
+  height: 130px;
+}
+
+@media (max-width: 640px) {
+  .chart {
+    width: 640px;
+  }
+}
+
+.chart-skeleton {
+  width: 100%;
+  height: 130px;
+  background: var(--gh-canvas-inset);
+  border-radius: 6px;
+}
+
+.error {
+  color: #cf222e;
+  font-size: 13px;
+}
+
+.legend-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--gh-text-secondary);
+  margin-top: 4px;
+}
+
+.legend-scale {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.legend-box {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  display: inline-block;
+}
+
+.pinned-accounts {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--gh-border);
+}
+
+.pinned-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border: 1px solid var(--gh-border);
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.year-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+.year-btn {
+  border: none;
+  background: transparent;
+  width: 110px;
+  padding: 10px 8px 10px 14px;
+  font-size: 13px;
+  color: var(--gh-text);
+  cursor: pointer;
+  border-radius: 8px;
+  text-align: left;
+
+  &:hover {
+    background: var(--gh-canvas-inset);
+  }
+
+  &.active {
+    background: var(--gh-accent);
+    color: #fff;
+    font-weight: 600;
+  }
+}
+
+@media (max-width: 640px) {
+  .heatmap-section {
+    flex-direction: column;
+  }
+
+  .year-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px;
+  }
+}
