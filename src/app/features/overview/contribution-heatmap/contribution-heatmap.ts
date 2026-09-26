@@ -1,4 +1,4 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, inject, input } from '@angular/core';
 import type { EChartsCoreOption } from 'echarts/core';
 import { injectQuery } from '@tanstack/angular-query-experimental';
 import { NgxEchartsDirective } from 'ngx-echarts';
@@ -16,27 +16,18 @@ const DAY_NAME_MAP = ['', 'Mon', '', 'Wed', '', 'Fri', ''];
   templateUrl: './contribution-heatmap.html',
 })
 export class ContributionHeatmap {
+  readonly selectedYear = input.required<string>();
+
   protected readonly pinnedAccounts = PINNED_ACCOUNTS;
 
   private readonly username = GITHUB_USERNAME;
   private readonly contributionSource = inject(CONTRIBUTION_SOURCE);
-  private readonly selectedYearOverride = signal<string | null>(null);
 
   protected readonly contributionsQuery = injectQuery(() => ({
     queryKey: ['contributions', this.username],
     queryFn: () => this.contributionSource.getContributions(this.username),
     staleTime: 5 * 60 * 1000,
   }));
-
-  protected readonly years = computed(() => {
-    const data = this.contributionsQuery.data();
-    if (!data) return [];
-    return Object.keys(data.total)
-      .filter((year) => /^\d{4}$/.test(year))
-      .sort((a, b) => Number(b) - Number(a));
-  });
-
-  protected readonly selectedYear = computed(() => this.selectedYearOverride() ?? this.years()[0] ?? '');
 
   protected readonly totalCount = computed(() => {
     const data = this.contributionsQuery.data();
@@ -95,8 +86,4 @@ export class ContributionHeatmap {
       ],
     };
   });
-
-  protected selectYear(year: string): void {
-    this.selectedYearOverride.set(year);
-  }
 }

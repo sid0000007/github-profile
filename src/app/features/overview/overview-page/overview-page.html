@@ -6,12 +6,29 @@
   <div class="main-col">
     <app-popular-repos />
 
-    <section class="card contributions-card">
-      <app-contribution-heatmap />
-      <div class="divider"></div>
-      <app-activity-overview />
-    </section>
+    <div class="contributions-row">
+      <div class="contributions-main">
+        <section class="card contributions-card">
+          <app-contribution-heatmap [selectedYear]="selectedYear()" />
+          <div class="divider"></div>
+          <app-activity-overview />
+        </section>
 
-    <app-contribution-activity />
+        <app-contribution-activity />
+      </div>
+
+      <div class="year-list">
+        @for (year of years(); track year) {
+          <button
+            class="year-btn"
+            type="button"
+            [class.active]="year === selectedYear()"
+            (click)="selectYear(year)"
+          >
+            {{ year }}
+          </button>
+        }
+      </div>
+    </div>
   </div>
 </div>

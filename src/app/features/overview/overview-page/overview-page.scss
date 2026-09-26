@@ -21,6 +21,20 @@
   border-radius: 6px;
 }
 
+.contributions-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 16px;
+  align-items: start;
+}
+
+.contributions-main {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
 .contributions-card {
   padding: 16px;
 }
@@ -30,6 +44,38 @@
   margin: 16px 0;
 }
 
+.year-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 110px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 16px;
+}
+
+.year-btn {
+  border: none;
+  background: transparent;
+  width: 100%;
+  padding: 8px 8px 8px 14px;
+  font-size: 13px;
+  color: var(--gh-text);
+  cursor: pointer;
+  border-radius: 6px;
+  text-align: left;
+
+  &:hover {
+    background: var(--gh-canvas-inset);
+  }
+
+  &.active {
+    background: var(--gh-accent);
+    color: #fff;
+    font-weight: 600;
+  }
+}
+
 @media (max-width: 768px) {
   .overview {
     grid-template-columns: 1fr;
@@ -37,5 +83,24 @@
 
   .sidebar-col {
     max-width: 480px;
+  }
+}
+
+@media (max-width: 640px) {
+  .contributions-row {
+    grid-template-columns: 1fr;
+  }
+
+  .year-list {
+    position: static;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: auto;
+    gap: 4px;
+  }
+
+  .year-btn {
+    width: auto;
+    padding: 6px 14px;
   }
 }

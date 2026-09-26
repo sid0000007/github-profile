@@ -42,3 +42,6 @@ __screenshots__/
 # System files
 .DS_Store
 Thumbs.db
+
+# Generated at install-time from NG_APP_GITHUB_USERNAME env var
+/src/app/core/config/runtime-username.generated.ts
